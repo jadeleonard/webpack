@@ -63,7 +63,7 @@ export default function RootLayout({
                 <ul className="hidden sm:inline-flex gap-4 mx-auto text-xs text-zinc-100">
                     {
                         navbar.map((items) =>(
-                            <li key={items.id}>
+                            <li>
                                 <Link href={items.url}>{items.name}</Link>
                             </li>
                         ))
@@ -80,7 +80,7 @@ export default function RootLayout({
             <ul className="hidden sm:inline-flex gap-6 text-zinc-100 text-sm">
               {
                 navbar2.map((items) =>(
-                  <li key={items.id}>
+                  <li>
                     <Link href={items.url}>
                         {items.name}
                     </Link> 
