@@ -4,6 +4,7 @@ import "./globals.css";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -42,7 +43,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="flex items-center justify-between p-4 sticky top-0 mx-auto bg-slate-900">
           <div className="mx-auto">
-            <img src="/path-to-your-logo.png" width={125} height={40} alt="Logo" />
+            <Image src="/path-to-your-logo.png" width={125} height={40} alt="Logo" />
           </div>
           <div className="w-[600px] inline-flex gap-1">
             <Input type="search" />
