@@ -11,6 +11,7 @@ const navbar = [
   { name: "Home", url: "/" },
   { name: "Sign up", url: "/sign-up" },
   { name: "Messages", url: "/messages" },
+  {name:"Sign In",url:"/sign-in"},
 ];
 
 const navbar2 = [
