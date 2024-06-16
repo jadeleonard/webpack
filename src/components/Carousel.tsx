@@ -1,13 +1,20 @@
-'use client';
-import React from 'react';
-import useFetch from './useFetch';
+'use client'
+import React from 'react'
+import useFetch from './useFetch'
 import { Card, CardContent, CardDescription, CardHeader } from './ui/card';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router' 
+
+
+
 
 interface Shoe {
     id: number;
-    price: number;
+
+
+
+    price :number
     name: string;
     description: string;
     image1: string;
@@ -17,35 +24,33 @@ interface Shoe {
     imag5: string;
 }
 
-const apiUrl = 'http://localhost:3000/api/shoes';
 
-const CarouselProps: React.FC = () => {
-    const { data, error, loading } = useFetch<Shoe[]>(apiUrl);
-
+const CarouselProps = () => {
+    const { data, error, loading } = useFetch<Shoe[]>(process.env.NEXT_PUBLIC_API_SHOES!);
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error.message}</div>;
+  return (
+    <div className='grid grid-cols-2 sm:grid-cols-4 gap-4'>
+        {
+            data && data?.map((items,data) =>(
+                <Link href={`/product-page/${items.id}`} key={data}>
+                <Card>
+                    <CardHeader>
+                        {items.name}
+                    </CardHeader>
+                    <CardContent>
+                        <CardDescription>
+                            ${items.price}
+                        </CardDescription>
+                        <Image src={items.image1} width={300} height={300} alt={items.name}/>
 
-    return (
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {data && data.map((item) => (
-                <Link href={`/product-page/${item.id}`} key={item.id}>
-                    <a>
-                        <Card className="cursor-pointer">
-                            <CardHeader>
-                                {item.name}
-                            </CardHeader>
-                            <CardContent>
-                                <CardDescription>
-                                    ${item.price}
-                                </CardDescription>
-                                <Image src={item.image1} width={300} height={300} alt={item.name} />
-                            </CardContent>
-                        </Card>
-                    </a>
+                    </CardContent>
+                </Card>
                 </Link>
-            ))}
-        </div>
-    );
-};
+            ))
+        }
+    </div>
+  )
+}
 
-export default CarouselProps;
+export default CarouselProps
