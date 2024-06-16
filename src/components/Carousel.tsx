@@ -3,6 +3,7 @@ import React from 'react'
 import useFetch from './useFetch'
 import { Card, CardContent, CardDescription, CardHeader } from './ui/card';
 import Image from 'next/image';
+import Link from 'next/link';
 interface Shoe {
     id: number;
 
@@ -24,10 +25,11 @@ const CarouselProps = () => {
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error.message}</div>;
   return (
-    <div className='grid grid-cols-2 sm:grid-cols-4'>
+    <div className='grid grid-cols-2 sm:grid-cols-4 gap-4'>
         {
             data && data?.map((items,data) =>(
-                <Card key={data}>
+                <Link href={`/product-page/${items.id}`} key={data}>
+                <Card>
                     <CardHeader>
                         {items.name}
                     </CardHeader>
@@ -39,6 +41,7 @@ const CarouselProps = () => {
 
                     </CardContent>
                 </Card>
+                </Link>
             ))
         }
     </div>
