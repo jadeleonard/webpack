@@ -3,7 +3,7 @@ import { SignIn } from '@clerk/nextjs'
 const SignInProps = () => {
   return (
     <div>
-      <SignIn />
+      <SignIn afterSignOutUrl={'/'} />
     </div>
   )
 }
