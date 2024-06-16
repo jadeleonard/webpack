@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
-import { ClerkProvider } from "@clerk/nextjs";
+import { ClerkProvider, UserButton } from "@clerk/nextjs";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -76,6 +76,7 @@ export default function RootLayout({
               My cart
             </Button>
           </div>
+          <UserButton />
         </nav>
         <div className="sticky top-0 z-20 bg-slate-950 p-3">
           <Navbar items={navbar2} className="hidden sm:inline-flex gap-6 text-zinc-100 text-sm" />

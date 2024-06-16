@@ -14,7 +14,7 @@ const App = () => {
     <div>
   
         <CarouselProps />
-        <UserButton />
+      
     </div>
   )
 }
