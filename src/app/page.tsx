@@ -1,6 +1,7 @@
 import React from 'react'
-import useFetch from '@/components/useFetch'
-import Hero from '@/components/Hero'
+
+import CarouselProps from '@/components/Carousel'
+import { UserButton } from '@clerk/nextjs'
 const App = () => {
   
 
@@ -11,7 +12,9 @@ const App = () => {
 
   return (
     <div>
-      <Hero /> 
+  
+        <CarouselProps />
+        <UserButton />
     </div>
   )
 }

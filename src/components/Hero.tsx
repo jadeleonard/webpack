@@ -1,105 +1,35 @@
 import React from 'react'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card'
+import { Carousel, CarouselContent, CarouselItem } from './ui/carousel'
+import Image from 'next/image'
+import Link from 'next/link';
 
+
+
+
+
+
+const navbar2 = [
+  { name: "Today's Deal", url: "/todaysdeal" },
+  { name: "Customer Service", url: "/customerservice" },
+  { name: "Registry", url: "/registry" },
+  { name: "Gift Cards", url: "/giftcards" },
+];
 const Hero = () => {
   return (
+    <div className=''>
+         <div className="flex items-center justify-between bg-slate-950 p-3 sticky top-0">
+          <ul className="hidden sm:inline-flex gap-6 text-zinc-100 text-sm">
+            {navbar2.map((item, index) => (
+              <li key={index}>
+                <Link href={item.url}>
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-
-
-
-
-
-    <div className='grid grid-cols-2 sm:grid-cols-4 gap-2'>
-      <div className='p-6'>
-        <Card>
-          <CardTitle>
-            Title
-          </CardTitle>
-          <CardContent>
-            <CardHeader>
-              Header
-            </CardHeader>
-            <CardDescription>
-              Description
-            </CardDescription>
-            <CardFooter>
-              Footer
-            </CardFooter>
-            <CardDescription>
-              description
-            </CardDescription>
-          </CardContent>
-        </Card>
-      </div>
-      
-      <div className='p-6'>
-        <Card>
-          <CardTitle>
-            Title
-          </CardTitle>
-          <CardContent>
-            <CardHeader>
-              Header
-            </CardHeader>
-            <CardDescription>
-              Description
-            </CardDescription>
-            <CardFooter>
-              Footer
-            </CardFooter>
-            <CardDescription>
-              description
-            </CardDescription>
-          </CardContent>
-        </Card>
-      </div>
-      
-      <div className='p-6'>
-        <Card>
-          <CardTitle>
-            Title
-          </CardTitle>
-          <CardContent>
-            <CardHeader>
-              Header
-            </CardHeader>
-            <CardDescription>
-              Description
-            </CardDescription>
-            <CardFooter>
-              Footer
-            </CardFooter>
-            <CardDescription>
-              description
-            </CardDescription>
-          </CardContent>
-        </Card>
-      </div>
-      
-      <div className='p-6'>
-        <Card>
-          <CardTitle>
-            Title
-          </CardTitle>
-          <CardContent>
-            <CardHeader>
-              Header
-            </CardHeader>
-            <CardDescription>
-              Description
-            </CardDescription>
-            <CardFooter>
-              Footer
-            </CardFooter>
-            <CardDescription>
-              description
-            </CardDescription>
-          </CardContent>
-        </Card>
-      </div>
-      
-
-        
+    
     </div>
   )
 }
