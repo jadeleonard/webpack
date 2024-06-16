@@ -1,176 +1,46 @@
+'use client'
 import React from 'react'
-import { Carousel, CarouselContent, CarouselItem } from './ui/carousel'
-import Image from 'next/image'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card'
+import useFetch from './useFetch'
+import { Card, CardContent, CardDescription, CardHeader } from './ui/card';
+import Image from 'next/image';
+interface Shoe {
+    id: number;
 
+
+
+    price :number
+    name: string;
+    description: string;
+    image1: string;
+    image2: string;
+    image3: string;
+    image4: string;
+    imag5: string;
+}
+
+const apiUrl = 'http://localhost:3000/api/shoes'
 const CarouselProps = () => {
+    const { data, error, loading } = useFetch<Shoe[]>(apiUrl);
+    if (loading) return <div>Loading...</div>;
+    if (error) return <div>Error: {error.message}</div>;
   return (
-    <div>
-      
-<section className="bg-white dark:bg-gray-900">
-    <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
+    <div className='grid grid-cols-2 sm:grid-cols-4'>
+        {
+            data && data?.map((items,data) =>(
+                <Card key={data}>
+                    <CardHeader>
+                        {items.name}
+                    </CardHeader>
+                    <CardContent>
+                        <CardDescription>
+                            ${items.price}
+                        </CardDescription>
+                        <Image src={items.image1} width={300} height={300} alt={items.name}/>
 
-        <div className='grid grid-cols-1'>
-        <div>
-                <Card>
-                    <CardTitle>Title</CardTitle>
-                    <CardContent>
-                        <CardHeader>
-                            Header
-                        </CardHeader>
-                        <CardDescription>
-                            Description
-                        </CardDescription>
                     </CardContent>
                 </Card>
-                
-            </div>
-        </div>
-        <div className='grid grid-cols-2 sm:grid-cols-4 gap-2'>
-            <div>
-                <Card>
-                    <CardTitle>Title</CardTitle>
-                    <CardContent>
-                        <CardHeader>
-                            Header
-                        </CardHeader>
-                        <CardDescription>
-                            Description
-                        </CardDescription>
-                    </CardContent>
-                </Card>
-                
-            </div>
-            <div>
-                <Card>
-                    <CardTitle>Title</CardTitle>
-                    <CardContent>
-                        <CardHeader>
-                            Header
-                        </CardHeader>
-                        <CardDescription>
-                            Description
-                        </CardDescription>
-                    </CardContent>
-                </Card>
-                
-            </div>
-            <div>
-                <Card>
-                    <CardTitle>Title</CardTitle>
-                    <CardContent>
-                        <CardHeader>
-                            Header
-                        </CardHeader>
-                        <CardDescription>
-                            Description
-                        </CardDescription>
-                    </CardContent>
-                </Card>
-                
-            </div>
-            <div>
-                <Card>
-                    <CardTitle>Title</CardTitle>
-                    <CardContent>
-                        <CardHeader>
-                            Header
-                        </CardHeader>
-                        <CardDescription>
-                            Description
-                        </CardDescription>
-                    </CardContent>
-                </Card>
-                
-            </div>
-            <div>
-                <Card>
-                    <CardTitle>Title</CardTitle>
-                    <CardContent>
-                        <CardHeader>
-                            Header
-                        </CardHeader>
-                        <CardDescription>
-                            Description
-                        </CardDescription>
-                    </CardContent>
-                </Card>
-                
-            </div>
-            <div>
-                <Card>
-                    <CardTitle>Title</CardTitle>
-                    <CardContent>
-                        <CardHeader>
-                            Header
-                        </CardHeader>
-                        <CardDescription>
-                            Description
-                        </CardDescription>
-                    </CardContent>
-                </Card>
-                
-            </div>
-            <div>
-                <Card>
-                    <CardTitle>Title</CardTitle>
-                    <CardContent>
-                        <CardHeader>
-                            Header
-                        </CardHeader>
-                        <CardDescription>
-                            Description
-                        </CardDescription>
-                    </CardContent>
-                </Card>
-                
-            </div>
-            <div>
-                <Card>
-                    <CardTitle>Title</CardTitle>
-                    <CardContent>
-                        <CardHeader>
-                            Header
-                        </CardHeader>
-                        <CardDescription>
-                            Description
-                        </CardDescription>
-                    </CardContent>
-                </Card>
-                
-            </div>
-            <div>
-                <Card>
-                    <CardTitle>Title</CardTitle>
-                    <CardContent>
-                        <CardHeader>
-                            Header
-                        </CardHeader>
-                        <CardDescription>
-                            Description
-                        </CardDescription>
-                    </CardContent>
-                </Card>
-                
-            </div>
-            <div>
-                <Card>
-                    <CardTitle>Title</CardTitle>
-                    <CardContent>
-                        <CardHeader>
-                            Header
-                        </CardHeader>
-                        <CardDescription>
-                            Description
-                        </CardDescription>
-                    </CardContent>
-                </Card>
-                
-            </div>
-
-        </div>
-    </div>
-</section>
+            ))
+        }
     </div>
   )
 }

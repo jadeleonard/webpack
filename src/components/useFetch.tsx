@@ -1,38 +1,33 @@
 'use client'
-import React from 'react'
-import { useState,useEffect } from 'react';
-import axios from 'axios'
-interface props {
-    url:string
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
+interface FetchResult<T> {
+    data: T | null;
+    loading: boolean;
+    error: Error | null;
 }
 
+const useFetch = <T,>(url: string): FetchResult<T> => {
+    const [data, setData] = useState<T | null>(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<Error | null>(null);
 
-
-const useFetch = ({url}:props) => {
-    const [data,setData] = useState([])
-    const [loading,setLoading] = useState(false);
-    const [error,setError] = useState(null);
-    
-    useEffect(() =>{
-        const fetchData = async () =>{
+    useEffect(() => {
+        const fetchData = async () => {
             try {
                 const response = await axios.get(url);
-                setLoading(true);
-               setData(response.data);
-            
-            } catch (error:any) {
-                    console.log(error.mesage)
-                    setError(error.message)
-            }finally {
+                setData(response.data);
+            } catch (err) {
+                setError(err as Error);
+            } finally {
                 setLoading(false);
             }
         };
         fetchData();
-    },[url])
+    }, [url]);
 
-  return    {
-        data,error,loading
-  }
-}
+    return { data, loading, error };
+};
 
-export default useFetch
+export default useFetch;
