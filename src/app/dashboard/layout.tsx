@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { UserButton } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -29,13 +31,20 @@ export const metadata: Metadata = {
   }>){
 
     return(
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning suppressContentEditableWarning>
             <body className={inter.className}>
               <div className="flex items-center justify-between mx-auto p-4 stick top-0 bg-slate-900 text-zinc-100">
                 <div className="mx-auto">
                   <Image src={''} width={125} height={40} alt="" />
 
                 </div>
+                <div className='hidden sm:inline-flex gap-1 mx-auto'>
+                <Input  type="search"placeholder="Search any Product"/>
+                <Button>
+                  Search
+                </Button>
+                </div>
+
                 <ul className="hidden sm:inline-flex mx-auto gap-4 text-sm">
                   {
                     navbarProps?.map((items,data) =>(
