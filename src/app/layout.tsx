@@ -56,13 +56,16 @@ export default function RootLayout({
       <body className={inter.className}>
         <nav className="relative z-10 flex items-center justify-between p-4 bg-slate-900">
           <div className="mx-auto">
+            <Link href={'/'}>
             <Image
               src="/greenmarket.jpg"
               width={125}
               height={40}
               alt="Logo"
+              className='shadow-md rounded'
               
             />
+            </Link>
           </div>
           <div className="w-[600px] inline-flex gap-1">
             <Input type="search" aria-label="Search" />
