@@ -58,7 +58,7 @@ export default function RootLayout({
           <div className="mx-auto">
             <Link href={'/'}>
             <Image
-              src="/greenmarket.jpg"
+              src="/greenmarket__1_-removebg-preview.jpg"
               width={125}
               height={40}
               alt="Logo"
