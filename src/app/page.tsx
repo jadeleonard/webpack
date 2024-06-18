@@ -1,7 +1,7 @@
 import React from 'react'
 
 import CarouselProps from '@/components/Carousel'
-import { UserButton } from '@clerk/nextjs'
+
 const App = () => {
   
 
@@ -14,6 +14,7 @@ const App = () => {
     <div>
   
         <CarouselProps />
+      
       
     </div>
   )

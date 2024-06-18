@@ -10,7 +10,7 @@ import { useRouter } from 'next/router'
 
 
 interface Shoe {
-    id: number;
+    id: string;
 
 
 
@@ -25,7 +25,7 @@ interface Shoe {
 }
 
 
-const CarouselProps = () => {
+const   CarouselProps = () => {
     const { data, error, loading } = useFetch<Shoe[]>(process.env.NEXT_PUBLIC_API_SHOES!);
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error.message}</div>;

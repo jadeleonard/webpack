@@ -57,7 +57,7 @@ export default function RootLayout({
         <nav className="relative z-10 flex items-center justify-between p-4 bg-slate-900">
           <div className="mx-auto">
             <Image
-              src="/path-to-your-logo.png"
+              src="/greenmarket.jpg"
               width={125}
               height={40}
               alt="Logo"
